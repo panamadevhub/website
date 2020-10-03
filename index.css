@@ -1,0 +1,49 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+}
+
+.hero {
+    /* Sizing */
+    width: 100vw;
+    height: 500px;
+    
+
+    /* Background styles */
+    background-image: url(img/hero_bg.svg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
+.grid-header{    
+    display: grid;
+    grid-template-columns: minmax(400px, 900px);
+    /* grid-template-columns: 2fr 1fr; */
+    transition: all 1s;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .pt-5{
+      padding-top: 6%;
+  }
+
+  .pb-5 {
+      padding-bottom: 6%;
+  }
