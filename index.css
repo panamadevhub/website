@@ -1,49 +1,128 @@
 html {
-    box-sizing: border-box;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: aliceblue;
+  box-sizing: border-box;
 }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  color: aliceblue;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 21px;
+}
+
+/* HERO BG */
 
 .hero {
-    /* Sizing */
-    width: 100vw;
-    height: 500px;
-    
-
-    /* Background styles */
-    background-image: url(img/hero_bg.svg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  height: 100vh;
+  background-image: url(img/hero_bg.svg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+/* GRID */
 
+.grid-header {
+  display: grid;
+  grid-template-columns: minmax(400px, 700px);
+  /* grid-template-columns: 2fr 1fr; */
+  transition: all 1s;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 120px 2%;
+}
 
-.grid-header{    
+@media (min-width: 600px) {
+
+  .grid-header {
     display: grid;
-    grid-template-columns: minmax(400px, 900px);
+    grid-template-columns: minmax(400px, 800px);
     /* grid-template-columns: 2fr 1fr; */
     transition: all 1s;
     text-align: center;
     align-items: center;
     align-content: center;
     justify-content: center;
+    padding: 8rem 2%;
   }
 
-  .pt-5{
-      padding-top: 6%;
-  }
+}
 
-  .pb-5 {
-      padding-bottom: 6%;
-  }
+.main-logo {
+  width: 50%;
+  min-width: 330px;
+}
+
+
+/* form */
+
+.btn-signup {
+  background-color: transparent;
+  padding: 12px 26px;
+  border: none;
+  background-color: #400040;
+  display: inline-block;
+  border-radius: 4px;
+  color: #b3acac
+}
+
+input {
+  padding: 12px 36px;
+  border-radius: 4px;
+  color: transparent;
+  border: 1px solid #451245;
+  box-sizing: border-box;
+
+}
+
+/* paddings */
+
+.pt-1 {
+  padding-top: 1rem;
+}
+
+.pt-3 {
+  padding-top: 3rem;
+}
+
+.pt-5 {
+  padding-top: 5rem;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #12000d;
+  min-height: 100px;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0rem;
+}
+
+.btn-padding {
+  padding: 0 1rem;
+}
+
+.logo-footer {
+  height: 30px;
+  max-width: 55px;
+
+}
