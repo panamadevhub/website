@@ -9,20 +9,20 @@
 </head>
 <body>
     
-
     <section class="hero">
         <div class="grid-header">
             <div class="pt-1 pb-5">
                 <img src="img/devhub_logo.png" class="main-logo" alt="">
-                <h1 class="">Somos una organización de profesionales con la misión de incentivar la innovación y el emprendimiento en desarrollo de software y productos digitales en Panamá.</h1> 
+                <h1 class="text-white">Somos una organización de profesionales con la misión de incentivar la innovación y el emprendimiento en desarrollo de software y productos digitales en Panamá.</h1> 
             </div>
            
            <!-- FORM -->
             <div class="pb-3 pt-1">
                 <div style="display: flex; justify-content: center;">
-                <form action="#">
-                  <input type="email" id="email" name="email" placeholder="Your Email Address" required="">
-                  <button class="btn-signup" type="submit" id="">Subscribete</button>
+                <form id="pdhmailinglist-form" alt="Form by Super Easy Forms" action="#">
+                  <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                  <button class="btn-signup" type="submit" id="pdhmailinglist-btn">Suscribete</button>
+                  <h5 id="pdhmailinglist-status" class="text-white" style="display:none;">Gracias por Suscribirte!</h5>
                 </form>
                 </div>
                </div>
@@ -43,5 +43,48 @@
           </div>
         </div>
 </footer>
+<!--Javascript-->
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $('#pdhmailinglist-form').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "https://wrvtd7ved5.execute-api.us-east-1.amazonaws.com/DeploymentStage/",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify( { "id": "","email": $('#email').val() } ),
+      beforeSend: function(data) {
+          $('#pdhmailinglist-btn').prop('disabled', true);
+          $('#pdhmailinglist-form :input').prop('disabled', true);
+          $('#pdhmailinglist-status').html('Enviando...').show();
+      },
+      success: function(data, status, jqXHR) {
+        console.log(data);
+        if(status === 'success'){
+          $('#pdhmailinglist-status').text("Gracias por suscribirte!").show();
+          $('#pdhmailinglist-form :input').removeProp('disabled');
+          $('#pdhmailinglist-btn').removeProp('disabled');
+        }
+        else {
+          $('#pdhmailinglist-status').text('Error. Porfavor intentelo denuevo.').show();
+          $('#pdhmailinglist-form :input').removeProp('disabled');
+          $('#pdhmailinglist-btn').removeProp('disabled');
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        $('#pdhmailinglist-status').text('Error. Porfavor revise su coneccion').show();
+        $('#pdhmailinglist-form :input').removeProp('disabled');
+        $('#pdhmailinglist-btn').removeProp('disabled');
+      }
+    });
+  }); 				
+});
+</script>
 </body>
 </html>
